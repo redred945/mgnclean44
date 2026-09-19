@@ -502,6 +502,7 @@ section{position:relative;z-index:1}
 }
 @media (max-width:560px){
   .wrap,.hd-in,.hero-in{padding-left:18px;padding-right:18px}
+  .hero{align-items:flex-start;padding-top:96px}
   .hd-in{gap:10px}
   .logo-mark{height:34px}
   .btn-cyan.btn-sm{padding:9px 14px;font-size:13px}
