@@ -106,11 +106,16 @@
     var message = (form.message && form.message.value || "").trim();
     var pickup = form.pickup && form.pickup.checked;
 
-    var lines = ["Bonjour MGNclean, je souhaite un devis :", ""];
+    var lines = ["Bonjour,", ""];
+    lines.push("Je souhaite un devis pour une prestation MGNclean.");
+    lines.push("");
     lines.push(message || "Je vous laisse me conseiller sur la prestation la plus adaptée.");
+    lines.push("");
     if (nom) lines.push("Nom : " + nom);
     if (tel) lines.push("Téléphone : " + tel);
     if (pickup) lines.push("Souhaite le service de récupération / restitution du véhicule");
+    lines.push("");
+    lines.push(nom ? "Cordialement, " + nom : "Cordialement");
 
     return lines.join("\n");
   }
