@@ -112,8 +112,9 @@
       setPos(e.clientX);
     });
 
-    /* gentle auto demo sweep on first view */
-    if ("IntersectionObserver" in window) {
+    /* gentle auto demo sweep on first view (skipped for reduced motion) */
+    var reduceMotionBa = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if ("IntersectionObserver" in window && !reduceMotionBa) {
       var demoed = false;
       var ioBa = new IntersectionObserver(
         function (entries) {
@@ -234,6 +235,7 @@
   var lightboxClose = document.getElementById("lightboxClose");
 
   if (lightbox && lightboxImg && lightboxCap && lightboxClose) {
+    var lightboxTrigger = null;
     document.querySelectorAll(".gal-item").forEach(function (item) {
       item.addEventListener("click", function (e) {
         var href = item.getAttribute("href") || "";
@@ -242,20 +244,27 @@
         var cap = item.getAttribute("data-cap") || (img ? img.alt : "");
         if (img) {
           e.preventDefault();
+          lightboxTrigger = item;
           lightboxImg.src = img.src;
           lightboxImg.alt = img.alt;
           lightboxCap.textContent = cap;
+          lightbox.inert = false;
           lightbox.classList.add("open");
+          lightboxClose.focus();
         }
       });
     });
-    var closeLightbox = function () { lightbox.classList.remove("open"); };
+    var closeLightbox = function () {
+      lightbox.classList.remove("open");
+      lightbox.inert = true;
+      if (lightboxTrigger) { lightboxTrigger.focus(); lightboxTrigger = null; }
+    };
     lightboxClose.addEventListener("click", closeLightbox);
     lightbox.addEventListener("click", function (e) {
       if (e.target === lightbox) closeLightbox();
     });
     window.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") closeLightbox();
+      if (e.key === "Escape" && lightbox.classList.contains("open")) closeLightbox();
     });
   }
 
