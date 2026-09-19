@@ -1,22 +1,31 @@
 (function () {
   "use strict";
 
-  /* Browsers restore the previous scroll position on reload by default —
-     without this, reloading mid-page (or reopening the tab) drops the
-     visitor back where they scrolled to instead of the hero. Deep links
-     with a real #hash are left alone. */
+  /* Always land on the hero on a fresh visit. Clicking an in-page nav
+     link (Tarifs, Avis…) updates the URL with a #hash without reloading,
+     so that hash lingers in the address bar/history — browsers then
+     restore that scroll position (or jump straight to the hash target)
+     the next time the tab reloads or is reopened, which reads as "the
+     site doesn't open on the hero anymore". These hashes are only used
+     for same-page nav here, never as shared deep links, so it's safe to
+     always reset to top rather than honor them on (re)load. */
   if ("scrollRestoration" in history) {
     history.scrollRestoration = "manual";
   }
-  if (!window.location.hash) {
-    window.scrollTo(0, 0);
+  if (window.location.hash) {
+    /* Strip the hash outright — otherwise the browser re-applies its own
+       native scroll-to-fragment once the hero image finishes loading and
+       the page's final height is known, which happens AFTER this script
+       runs and silently undoes a plain scrollTo(0,0) below. */
+    history.replaceState(null, "", window.location.pathname + window.location.search);
   }
+  window.scrollTo(0, 0);
   /* Mobile Safari/Chrome restore the page from cache (bfcache) — with its
      old scroll position intact — when the visitor switches app/tab and
      comes back, or taps the browser's back button. That restore doesn't
      re-run this script, so it needs its own listener. */
   window.addEventListener("pageshow", function (e) {
-    if (e.persisted && !window.location.hash) {
+    if (e.persisted) {
       window.scrollTo(0, 0);
     }
   });
