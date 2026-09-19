@@ -1,0 +1,12 @@
+# Raw source photos provided by the client (not used directly by the site)
+/mgnclean_imgs/
+
+# Superseded low-res screenshots / unused HQ duplicates
+/assets/img/raw/
+/assets/img/hq/porsche-911-turbos-hq-1.jpg
+/assets/img/hq/porsche-911-turbos-hq-2.jpg
+/assets/img/hq/porsche-911-turbos-backstage-hq.jpg
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
