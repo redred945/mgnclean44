@@ -14,6 +14,7 @@
   --cyan-dim:rgba(63,109,242,.13);
   --glow:rgba(63,109,242,.30);
   --danger:#ff5470;
+  --ok:#34d399;
   --star:#fbbf24;
   --radius:18px;
   --radius-sm:12px;
@@ -555,6 +556,12 @@ section{position:relative;z-index:1}
 .devis-total b{font-family:var(--ff-display);font-size:22px;color:var(--text)}
 .btn-block{width:100%}
 .field-note{font-size:12.5px;color:var(--muted-2);text-align:center;margin-top:-6px}
+.field-status{font-size:13px;font-weight:600;text-align:center;min-height:18px}
+.field-status.is-ok{color:var(--ok)}
+.field-status.is-error{color:var(--danger)}
+.field-status.is-pending{color:var(--muted-2);font-weight:400}
+.form-divider{display:flex;align-items:center;gap:12px;color:var(--muted-2);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin:2px 0}
+.form-divider::before,.form-divider::after{content:"";flex:1;height:1px;background:var(--line)}
 .contact-side{display:flex;flex-direction:column;gap:20px}
 .contact-card{
   background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:28px;

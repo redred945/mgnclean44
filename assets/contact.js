@@ -9,6 +9,12 @@
   var WA_NUMBER = "33768964930";
   var IG_USERNAME = "mgnclean44";
 
+  /* TODO: replace with the real Web3Forms access key before going live.
+     Get one free, no account needed: https://web3forms.com/ — enter the
+     email that should receive the quote requests, they email you a key
+     instantly. Swap it in below. */
+  var WEB3FORMS_ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY";
+
   var totalEl = document.querySelector("#cf-total b");
   var noteEl = document.getElementById("cf-note");
   var noteDefault = noteEl ? noteEl.textContent : "";
@@ -128,6 +134,68 @@
       } else {
         openIg(false);
       }
+    });
+  }
+
+  var siteBtn = document.getElementById("cf-site");
+  var siteStatus = document.getElementById("cf-site-status");
+  var siteBtnLabel = siteBtn ? siteBtn.innerHTML : "";
+
+  function setSiteStatus(text, kind) {
+    if (!siteStatus) return;
+    siteStatus.textContent = text;
+    siteStatus.className = "field-status" + (kind ? " is-" + kind : "");
+  }
+
+  if (siteBtn) {
+    siteBtn.addEventListener("click", function () {
+      var nom = (form.nom && form.nom.value || "").trim();
+      var tel = (form.telephone && form.telephone.value || "").trim();
+
+      if (!nom || !tel) {
+        setSiteStatus("Merci de renseigner votre nom et votre téléphone avant d'envoyer.", "error");
+        (nom ? form.telephone : form.nom).focus();
+        return;
+      }
+
+      if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY === "YOUR_WEB3FORMS_ACCESS_KEY") {
+        setSiteStatus("Envoi direct pas encore configuré — utilisez WhatsApp ou Instagram ci-dessus pour le moment.", "error");
+        return;
+      }
+
+      siteBtn.disabled = true;
+      siteBtn.innerHTML = "Envoi en cours…";
+      setSiteStatus("", "pending");
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: "Nouvelle demande de devis — MGNclean",
+          from_name: nom,
+          phone: tel,
+          message: buildMessage()
+        })
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          siteBtn.disabled = false;
+          siteBtn.innerHTML = siteBtnLabel;
+          if (data && data.success) {
+            setSiteStatus("Message envoyé ✓ — nous revenons vers vous rapidement.", "ok");
+            form.reset();
+            computeTotal();
+            serviceInputs().forEach(updateHighlight);
+          } else {
+            setSiteStatus("Échec de l'envoi — utilisez WhatsApp ou Instagram ci-dessus.", "error");
+          }
+        })
+        .catch(function () {
+          siteBtn.disabled = false;
+          siteBtn.innerHTML = siteBtnLabel;
+          setSiteStatus("Échec de l'envoi — utilisez WhatsApp ou Instagram ci-dessus.", "error");
+        });
     });
   }
 })();
