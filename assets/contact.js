@@ -51,49 +51,66 @@
     return { total: total, hasDevis: hasDevis };
   }
 
+  /* Auto-drafted message: written from the selected formule/options, but
+     never overwrites what the visitor typed themselves — it only refreshes
+     while the field still matches the last auto-generated text (i.e. the
+     visitor hasn't touched it yet, or hasn't diverged from it). */
+  var messageEl = form.message;
+  var lastAutoMessage = "";
+
+  function autoMessageText() {
+    var formule = form.querySelector("#cf-formule input:checked");
+    var options = Array.prototype.slice.call(form.querySelectorAll("#cf-options input:checked"));
+    var totals = computeTotal();
+    var hasFormule = !!(formule && formule.value);
+
+    if (!hasFormule && !options.length) return "";
+
+    var sentence = hasFormule
+      ? "Je souhaite une prestation " + formule.value + (formule.dataset.price !== "0" ? " (" + formule.dataset.price + "€)" : "")
+      : "Je souhaite un devis";
+
+    if (options.length) {
+      var optTxt = options.map(function (o) {
+        return o.dataset.devis === "1" ? o.value + " (sur devis)" : o.value + " (" + o.dataset.price + "€)";
+      }).join(", ");
+      sentence += (hasFormule ? " avec les options suivantes : " : " avec ") + optTxt;
+    }
+
+    sentence += ". Total estimé : " + totals.total + "€" + (totals.hasDevis ? " (+ prestations sur devis)" : "") + ".";
+    return sentence;
+  }
+
+  function refreshAutoMessage() {
+    if (!messageEl) return;
+    if (messageEl.value === "" || messageEl.value === lastAutoMessage) {
+      lastAutoMessage = autoMessageText();
+      messageEl.value = lastAutoMessage;
+    }
+  }
+
   serviceInputs().forEach(function (input) {
     updateHighlight(input);
     input.addEventListener("change", function () {
       updateHighlight(input);
       computeTotal();
+      refreshAutoMessage();
     });
   });
   computeTotal();
+  refreshAutoMessage();
 
   function buildMessage() {
-    var formule = form.querySelector("#cf-formule input:checked");
-    var options = Array.prototype.slice.call(form.querySelectorAll("#cf-options input:checked"));
-    var totals = computeTotal();
     var nom = (form.nom && form.nom.value || "").trim();
     var tel = (form.telephone && form.telephone.value || "").trim();
     var message = (form.message && form.message.value || "").trim();
     var pickup = form.pickup && form.pickup.checked;
 
     var lines = ["Bonjour MGNclean, je souhaite un devis :", ""];
-
-    if (formule && formule.value) {
-      var price = formule.dataset.price;
-      lines.push("Formule : " + formule.value + (price && price !== "0" ? " — " + price + "€" : ""));
-    } else {
-      lines.push("Formule : à définir");
-    }
-
-    if (options.length) {
-      var optTxt = options.map(function (o) {
-        return o.dataset.devis === "1" ? o.value + " (sur devis)" : o.value + " (" + o.dataset.price + "€)";
-      }).join(", ");
-      lines.push("Options : " + optTxt);
-    }
-
-    lines.push("Total estimé : " + totals.total + "€" + (totals.hasDevis ? " (+ prestations sur devis)" : ""));
-
+    lines.push(message || "Je vous laisse me conseiller sur la prestation la plus adaptée.");
     if (nom) lines.push("Nom : " + nom);
     if (tel) lines.push("Téléphone : " + tel);
     if (pickup) lines.push("Souhaite le service de récupération / restitution du véhicule");
-    if (message) {
-      lines.push("");
-      lines.push(message);
-    }
 
     return lines.join("\n");
   }
@@ -187,6 +204,8 @@
             form.reset();
             computeTotal();
             serviceInputs().forEach(updateHighlight);
+            lastAutoMessage = "";
+            refreshAutoMessage();
           } else {
             setSiteStatus("Échec de l'envoi — utilisez WhatsApp ou Instagram ci-dessus.", "error");
           }
