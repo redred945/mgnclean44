@@ -4,9 +4,12 @@
   var form = document.getElementById("contactForm");
   if (!form) return;
 
-  /* Phone-number based wa.me link so the ?text= prefill is reliably supported
-     (the wa.me/message/<id> short links do not reliably accept a text param). */
-  var WA_NUMBER = "33768964930";
+  /* Verified WhatsApp Business click-to-chat short link (same one used
+     site-wide in the header/footer). A direct wa.me/<number>?text= link
+     would let us prefill the message automatically, but the number shown
+     on the site (07 68 96 49 20) isn't registered on WhatsApp under that
+     account, so we fall back to copy-to-clipboard + open, same as Instagram. */
+  var WA_LINK = "https://wa.me/message/XT7KCCNUZB6QK1";
   var IG_USERNAME = "mgnclean44";
 
   /* TODO: replace with the real Web3Forms access key before going live.
@@ -129,9 +132,25 @@
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    var text = encodeURIComponent(buildMessage());
-    var url = "https://wa.me/" + WA_NUMBER + "?text=" + text;
-    window.open(url, "_blank", "noopener");
+    var text = buildMessage();
+
+    function openWa(copied) {
+      window.open(WA_LINK, "_blank", "noopener");
+      flashNote(
+        copied
+          ? "Message copié — collez-le (Ctrl+V) dans la conversation WhatsApp qui vient de s'ouvrir."
+          : "WhatsApp s'ouvre dans un nouvel onglet — il ne reste plus qu'à nous écrire votre demande là-bas."
+      );
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(
+        function () { openWa(true); },
+        function () { openWa(false); }
+      );
+    } else {
+      openWa(false);
+    }
   });
 
   var igBtn = document.getElementById("cf-instagram");
