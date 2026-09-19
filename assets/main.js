@@ -1,6 +1,17 @@
 (function () {
   "use strict";
 
+  /* Browsers restore the previous scroll position on reload by default —
+     without this, reloading mid-page (or reopening the tab) drops the
+     visitor back where they scrolled to instead of the hero. Deep links
+     with a real #hash are left alone. */
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
+
   /* Header scroll state */
   var hd = document.getElementById("hd");
   function onScroll() {

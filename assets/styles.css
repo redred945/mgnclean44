@@ -443,6 +443,7 @@ section{position:relative;z-index:1}
 .ft-social svg{width:16px;height:16px}
 .ft h5{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted-2);margin-bottom:18px}
 .ft ul{display:flex;flex-direction:column;gap:12px}
+.ft .ft-inline{flex-direction:row;flex-wrap:wrap;gap:8px 14px}
 .ft a{font-size:14px;color:var(--muted)}
 .ft a:hover{color:var(--cyan-2)}
 .ft-contact li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--muted)}
@@ -516,7 +517,8 @@ section{position:relative;z-index:1}
   .section{padding:76px 0}
   .tel-pill{display:none}
   .stats-in{grid-template-columns:1fr 1fr;padding:26px 18px}
-  .ft-grid{grid-template-columns:1fr}
+  .ft-grid{grid-template-columns:1fr;gap:28px;margin-bottom:32px}
+  .ft{padding:48px 0 24px}
   .opts{grid-template-columns:1fr 1fr}
   .ba-slider{aspect-ratio:3/4}
 }
