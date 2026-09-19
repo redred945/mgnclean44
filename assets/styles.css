@@ -187,7 +187,7 @@ body::before{
 .stat{text-align:center;padding:0 8px;border-right:1px solid var(--line)}
 .stat:last-child{border-right:none}
 .stat b{display:block;font-family:var(--ff-display);font-size:clamp(24px,2.6vw,34px);color:var(--text);margin-bottom:4px}
-.stat b .cy{color:var(--cyan)}
+.stat b .cy{color:var(--cyan);font-size:1em}
 .stat span{font-size:12.5px;color:var(--muted);letter-spacing:.02em}
 
 /* ===================== Section shell ===================== */
@@ -535,6 +535,24 @@ section{position:relative;z-index:1}
 .field-check{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--muted);cursor:pointer}
 .field-check input{width:18px;height:18px;flex-shrink:0;accent-color:var(--cyan);margin-top:1px}
 .field-check b{color:var(--text);font-weight:600}
+.svc-radio-group,.svc-check-group{display:flex;flex-direction:column;gap:8px}
+.svc-radio,.svc-check{
+  display:flex;align-items:center;gap:10px;background:var(--bg);
+  border:1px solid var(--line-2);border-radius:var(--radius-sm);
+  padding:11px 14px;cursor:pointer;font-size:14px;color:var(--muted);
+  transition:border-color .2s,background .2s;
+}
+.svc-radio input,.svc-check input{width:16px;height:16px;flex-shrink:0;accent-color:var(--cyan)}
+.svc-radio span,.svc-check span{flex:1;color:var(--text)}
+.svc-radio b,.svc-check b{color:var(--cyan);font-weight:700;font-size:13.5px;white-space:nowrap}
+.svc-radio.is-checked,.svc-check.is-checked{border-color:var(--cyan);background:rgba(63,109,242,.08)}
+.devis-total{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:var(--bg);border:1px dashed var(--line-2);border-radius:var(--radius-sm);
+  padding:14px 16px;
+}
+.devis-total span{font-size:13.5px;color:var(--muted);font-weight:600}
+.devis-total b{font-family:var(--ff-display);font-size:22px;color:var(--text)}
 .btn-block{width:100%}
 .field-note{font-size:12.5px;color:var(--muted-2);text-align:center;margin-top:-6px}
 .contact-side{display:flex;flex-direction:column;gap:20px}

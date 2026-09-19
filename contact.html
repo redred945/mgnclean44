@@ -70,7 +70,7 @@
     <div class="sec-head center" data-reveal>
       <span class="sec-eyebrow">Contact &amp; devis</span>
       <h1>Demandez votre devis en 30 secondes.</h1>
-      <p>Choisissez votre prestation, laissez vos coordonnées et envoyez votre demande directement sur WhatsApp — réponse rapide garantie, à Nantes et son agglomération.</p>
+      <p>Sélectionnez votre formule et vos options pour estimer le prix, laissez vos coordonnées et envoyez votre demande directement sur WhatsApp ou Instagram — réponse rapide garantie, à Nantes et son agglomération.</p>
     </div>
   </div>
 </section>
@@ -81,27 +81,33 @@
     <div class="contact-grid">
       <form class="contact-form" id="contactForm" data-reveal novalidate>
         <div class="field">
-          <label for="cf-prestation">Prestation souhaitée</label>
-          <select id="cf-prestation" name="prestation" required>
-            <option value="" disabled selected>Choisissez une prestation…</option>
-            <optgroup label="Formules">
-              <option>Extérieur — 50€</option>
-              <option>Intérieur — 70€</option>
-              <option>Intégrale — 110€</option>
-            </optgroup>
-            <optgroup label="Options &amp; suppléments">
-              <option>Shampouinage sièges — 10€</option>
-              <option>Shampouinage tapis — 10€</option>
-              <option>Effet hydrofuge pare-brise — 20€</option>
-              <option>Nourrissant cuir — 10€</option>
-              <option>Désodorisation / désinfection — 10€</option>
-              <option>Finitions pneus brillants — 5€</option>
-              <option>Traitement céramique — sur devis</option>
-              <option>Polissage — sur devis</option>
-              <option>Rénovation de phares ternis — sur mesure</option>
-            </optgroup>
-            <option>Autre / je ne sais pas encore</option>
-          </select>
+          <label>Formule de base</label>
+          <div class="svc-radio-group" id="cf-formule">
+            <label class="svc-radio"><input type="radio" name="formule" value="" data-price="0" checked /><span>Aucune / à définir</span></label>
+            <label class="svc-radio"><input type="radio" name="formule" value="Extérieur" data-price="50" /><span>Extérieur</span><b>50€</b></label>
+            <label class="svc-radio"><input type="radio" name="formule" value="Intérieur" data-price="70" /><span>Intérieur</span><b>70€</b></label>
+            <label class="svc-radio"><input type="radio" name="formule" value="Intégrale" data-price="110" /><span>Intégrale</span><b>110€</b></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Options &amp; suppléments <span class="opt-label">(sélection multiple)</span></label>
+          <div class="svc-check-group" id="cf-options">
+            <label class="svc-check"><input type="checkbox" value="Shampouinage sièges" data-price="10" /><span>Shampouinage sièges</span><b>10€</b></label>
+            <label class="svc-check"><input type="checkbox" value="Shampouinage tapis" data-price="10" /><span>Shampouinage tapis</span><b>10€</b></label>
+            <label class="svc-check"><input type="checkbox" value="Effet hydrofuge pare-brise" data-price="20" /><span>Effet hydrofuge pare-brise</span><b>20€</b></label>
+            <label class="svc-check"><input type="checkbox" value="Nourrissant cuir" data-price="10" /><span>Nourrissant cuir</span><b>10€</b></label>
+            <label class="svc-check"><input type="checkbox" value="Désodorisation / désinfection" data-price="10" /><span>Désodorisation / désinfection</span><b>10€</b></label>
+            <label class="svc-check"><input type="checkbox" value="Finitions pneus brillants" data-price="5" /><span>Finitions pneus brillants</span><b>5€</b></label>
+            <label class="svc-check"><input type="checkbox" value="Traitement céramique" data-price="0" data-devis="1" /><span>Traitement céramique</span><b>Sur devis</b></label>
+            <label class="svc-check"><input type="checkbox" value="Polissage" data-price="0" data-devis="1" /><span>Polissage</span><b>Sur devis</b></label>
+            <label class="svc-check"><input type="checkbox" value="Rénovation de phares ternis" data-price="0" data-devis="1" /><span>Rénovation de phares ternis</span><b>Sur mesure</b></label>
+          </div>
+        </div>
+
+        <div class="devis-total" id="cf-total">
+          <span>Total estimé</span>
+          <b>0€</b>
         </div>
 
         <div class="field-row">
@@ -129,7 +135,11 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A8.86 8.86 0 0 0 12.03 4a8.94 8.94 0 0 0-7.74 13.4L3 21l3.72-1.24a8.94 8.94 0 0 0 5.31 1.7h.01A8.94 8.94 0 0 0 21 12.5a8.86 8.86 0 0 0-3.4-6.18Z"/></svg>
           Envoyer ma demande sur WhatsApp
         </button>
-        <p class="field-note">En cliquant, WhatsApp s'ouvre avec votre demande déjà rédigée — il ne reste plus qu'à l'envoyer.</p>
+        <button type="button" id="cf-instagram" class="btn btn-ghost btn-block">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          Envoyer ma demande sur Instagram
+        </button>
+        <p class="field-note" id="cf-note">Le message est déjà rédigé pour vous — il ne reste plus qu'à l'envoyer.</p>
       </form>
 
       <div class="contact-side" data-reveal>
