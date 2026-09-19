@@ -224,29 +224,31 @@
   var lightboxCap = document.getElementById("lightboxCap");
   var lightboxClose = document.getElementById("lightboxClose");
 
-  document.querySelectorAll(".gal-item").forEach(function (item) {
-    item.addEventListener("click", function (e) {
-      var href = item.getAttribute("href") || "";
-      if (href.indexOf("instagram.com") === -1) return;
-      var img = item.querySelector("img");
-      var cap = item.getAttribute("data-cap") || (img ? img.alt : "");
-      if (img) {
-        e.preventDefault();
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-        lightboxCap.textContent = cap;
-        lightbox.classList.add("open");
-      }
+  if (lightbox && lightboxImg && lightboxCap && lightboxClose) {
+    document.querySelectorAll(".gal-item").forEach(function (item) {
+      item.addEventListener("click", function (e) {
+        var href = item.getAttribute("href") || "";
+        if (href.indexOf("instagram.com") === -1) return;
+        var img = item.querySelector("img");
+        var cap = item.getAttribute("data-cap") || (img ? img.alt : "");
+        if (img) {
+          e.preventDefault();
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          lightboxCap.textContent = cap;
+          lightbox.classList.add("open");
+        }
+      });
     });
-  });
-  function closeLightbox() { lightbox.classList.remove("open"); }
-  lightboxClose.addEventListener("click", closeLightbox);
-  lightbox.addEventListener("click", function (e) {
-    if (e.target === lightbox) closeLightbox();
-  });
-  window.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") closeLightbox();
-  });
+    var closeLightbox = function () { lightbox.classList.remove("open"); };
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+    window.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeLightbox();
+    });
+  }
 
   /* Footer year */
   var y = document.getElementById("year");
