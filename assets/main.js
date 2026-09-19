@@ -11,6 +11,15 @@
   if (!window.location.hash) {
     window.scrollTo(0, 0);
   }
+  /* Mobile Safari/Chrome restore the page from cache (bfcache) — with its
+     old scroll position intact — when the visitor switches app/tab and
+     comes back, or taps the browser's back button. That restore doesn't
+     re-run this script, so it needs its own listener. */
+  window.addEventListener("pageshow", function (e) {
+    if (e.persisted && !window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  });
 
   /* Header scroll state */
   var hd = document.getElementById("hd");

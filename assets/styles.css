@@ -435,7 +435,7 @@ section{position:relative;z-index:1}
 
 /* ===================== Footer ===================== */
 .ft{border-top:1px solid var(--line);padding:64px 0 28px;background:var(--bg-2)}
-.ft-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px;margin-bottom:52px}
+.ft-grid{display:grid;grid-template-columns:1.4fr repeat(2,1fr);gap:40px;margin-bottom:52px}
 .ft-brand p{color:var(--muted);font-size:14px;line-height:1.7;margin:16px 0 20px;max-width:32ch}
 .ft-social{display:flex;gap:10px}
 .ft-social a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:.25s}
@@ -443,7 +443,6 @@ section{position:relative;z-index:1}
 .ft-social svg{width:16px;height:16px}
 .ft h5{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted-2);margin-bottom:18px}
 .ft ul{display:flex;flex-direction:column;gap:12px}
-.ft .ft-inline{flex-direction:row;flex-wrap:wrap;gap:8px 14px}
 .ft a{font-size:14px;color:var(--muted)}
 .ft a:hover{color:var(--cyan-2)}
 .ft-contact li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--muted)}
@@ -456,7 +455,7 @@ section{position:relative;z-index:1}
 .ft-bottom a:hover{color:var(--cyan-2)}
 
 /* ===================== Reveal on scroll ===================== */
-[data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
+[data-reveal]{opacity:0;transform:translateY(10px);transition:opacity .4s ease, transform .4s cubic-bezier(.2,.7,.2,1)}
 [data-reveal].in{opacity:1;transform:none}
 
 /* ===================== WhatsApp float ===================== */
