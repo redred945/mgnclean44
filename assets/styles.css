@@ -299,7 +299,8 @@ section{position:relative;z-index:1}
   .review-card{flex:0 0 calc((100% - 22px) / 2)}
 }
 @media (max-width:640px){
-  .review-card{flex:0 0 88%}
+  .review-track{gap:14px}
+  .review-card{flex:0 0 88%;padding:24px 22px}
 }
 
 /* ===================== Gallery ===================== */
@@ -379,6 +380,7 @@ section{position:relative;z-index:1}
 }
 .ba-text h3{font-size:26px;margin-bottom:16px}
 .ba-text p{color:var(--muted);font-size:15.5px;line-height:1.7;margin-bottom:26px}
+.ba-desc{color:var(--muted);font-size:15.5px;line-height:1.7;margin:16px 0 28px}
 .ba-steps{display:flex;flex-direction:column;gap:18px;margin-bottom:30px}
 .ba-step{display:flex;gap:14px;align-items:flex-start}
 .ba-step .n{
@@ -500,12 +502,19 @@ section{position:relative;z-index:1}
 }
 @media (max-width:560px){
   .wrap,.hd-in,.hero-in{padding-left:18px;padding-right:18px}
+  .hd-in{gap:10px}
+  .logo-mark{height:34px}
+  .btn-cyan.btn-sm{padding:9px 14px;font-size:13px}
   .section{padding:76px 0}
   .tel-pill{display:none}
   .stats-in{grid-template-columns:1fr 1fr;padding:26px 18px}
   .ft-grid{grid-template-columns:1fr}
   .opts{grid-template-columns:1fr 1fr}
   .ba-slider{aspect-ratio:3/4}
+}
+@media (max-width:360px){
+  .hd-actions .btn-cyan span,.hd-actions .btn-cyan{white-space:nowrap}
+  .logo-mark{height:28px}
 }
 
 /* ===================== Mobile swipeable carousels ===================== */
