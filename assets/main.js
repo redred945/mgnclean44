@@ -15,16 +15,25 @@
   var mnav = document.getElementById("mnav");
   function closeMnav() {
     mnav.classList.remove("open");
+    mnav.inert = true;
     burger.classList.remove("open");
     burger.setAttribute("aria-expanded", "false");
   }
+  function openMnav() {
+    mnav.classList.add("open");
+    mnav.inert = false;
+    burger.classList.add("open");
+    burger.setAttribute("aria-expanded", "true");
+  }
   burger.addEventListener("click", function () {
-    var open = mnav.classList.toggle("open");
-    burger.classList.toggle("open", open);
-    burger.setAttribute("aria-expanded", String(open));
+    if (mnav.classList.contains("open")) closeMnav();
+    else openMnav();
   });
   mnav.querySelectorAll("a").forEach(function (a) {
     a.addEventListener("click", closeMnav);
+  });
+  window.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && mnav.classList.contains("open")) closeMnav();
   });
 
   /* Reveal on scroll */

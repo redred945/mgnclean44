@@ -130,8 +130,22 @@
     noteTimer = setTimeout(function () { noteEl.textContent = noteDefault; }, 6000);
   }
 
+  /* Shared nom/téléphone check for every send channel — `report` receives
+     the error text so each button can surface it in its own status area. */
+  function requireContactFields(report) {
+    var nom = (form.nom && form.nom.value || "").trim();
+    var tel = (form.telephone && form.telephone.value || "").trim();
+    if (!nom || !tel) {
+      report("Merci de renseigner votre nom et votre téléphone avant d'envoyer.");
+      (nom ? form.telephone : form.nom).focus();
+      return false;
+    }
+    return true;
+  }
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+    if (!requireContactFields(flashNote)) return;
     var text = buildMessage();
 
     function openWa(copied) {
@@ -156,6 +170,7 @@
   var igBtn = document.getElementById("cf-instagram");
   if (igBtn) {
     igBtn.addEventListener("click", function () {
+      if (!requireContactFields(flashNote)) return;
       var text = buildMessage();
 
       function openIg(copied) {
@@ -179,8 +194,9 @@
   }
 
   var siteBtn = document.getElementById("cf-site");
+  var siteDivider = document.getElementById("cf-site-divider");
   var siteStatus = document.getElementById("cf-site-status");
-  var siteBtnLabel = siteBtn ? siteBtn.innerHTML : "";
+  var web3formsReady = WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY !== "YOUR_WEB3FORMS_ACCESS_KEY";
 
   function setSiteStatus(text, kind) {
     if (!siteStatus) return;
@@ -188,21 +204,20 @@
     siteStatus.className = "field-status" + (kind ? " is-" + kind : "");
   }
 
-  if (siteBtn) {
+  if (siteBtn && !web3formsReady) {
+    /* Not configured yet: hide the whole "or send from the site" block
+       rather than leave a button that always fails once deployed. */
+    siteBtn.style.display = "none";
+    if (siteDivider) siteDivider.style.display = "none";
+    if (siteStatus) siteStatus.style.display = "none";
+  } else if (siteBtn) {
+    var siteBtnLabel = siteBtn.innerHTML;
+
     siteBtn.addEventListener("click", function () {
+      if (!requireContactFields(function (msg) { setSiteStatus(msg, "error"); })) return;
+
       var nom = (form.nom && form.nom.value || "").trim();
       var tel = (form.telephone && form.telephone.value || "").trim();
-
-      if (!nom || !tel) {
-        setSiteStatus("Merci de renseigner votre nom et votre téléphone avant d'envoyer.", "error");
-        (nom ? form.telephone : form.nom).focus();
-        return;
-      }
-
-      if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY === "YOUR_WEB3FORMS_ACCESS_KEY") {
-        setSiteStatus("Envoi direct pas encore configuré — utilisez WhatsApp ou Instagram ci-dessus pour le moment.", "error");
-        return;
-      }
 
       siteBtn.disabled = true;
       siteBtn.innerHTML = "Envoi en cours…";
