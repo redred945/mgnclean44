@@ -377,6 +377,7 @@ section{position:relative;z-index:1}
 .ba-wrap{
   display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;
 }
+.ba-wrap > div{min-width:0}
 .ba-tabs{
   display:flex;gap:10px;margin-bottom:18px;overflow-x:auto;
   -webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;
@@ -493,6 +494,10 @@ section{position:relative;z-index:1}
   box-shadow:0 0 0 1px rgba(63,109,242,.12), 0 30px 60px -30px rgba(0,0,0,.6);
 }
 .cer-video{display:block;width:100%;height:100%;object-fit:cover}
+
+/* ===================== Phares (rénovation) ===================== */
+.phares-slider-wrap{max-width:420px;margin:36px auto 0}
+.phares-slider-wrap .ba-tabs{justify-content:center}
 
 /* ===================== CTA band ===================== */
 .cta-band{

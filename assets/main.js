@@ -184,25 +184,29 @@
     }
   });
 
-  /* Before / After tabs (extérieur / intérieur) */
-  var baTabs = document.querySelectorAll(".ba-tab");
-  if (baTabs.length) {
-    baTabs.forEach(function (tab) {
+  /* Before / After tabs — scoped per tab-group (shared parent of the
+     .ba-tabs bar and its .ba-panel siblings) so multiple independent
+     tabbed slider groups can coexist on the same page. */
+  document.querySelectorAll(".ba-tabs").forEach(function (tabsEl) {
+    var group = tabsEl.parentElement;
+    var tabs = Array.prototype.slice.call(tabsEl.querySelectorAll(".ba-tab"));
+    var panels = Array.prototype.slice.call(group.querySelectorAll("[data-ba-panel]"));
+    tabs.forEach(function (tab) {
       tab.addEventListener("click", function () {
         var target = tab.getAttribute("data-ba-tab");
-        baTabs.forEach(function (t) {
+        tabs.forEach(function (t) {
           var active = t === tab;
           t.classList.toggle("active", active);
           t.setAttribute("aria-selected", String(active));
         });
-        document.querySelectorAll("[data-ba-panel]").forEach(function (panel) {
+        panels.forEach(function (panel) {
           var show = panel.getAttribute("data-ba-panel") === target;
           panel.classList.toggle("active", show);
           panel.hidden = !show;
         });
       });
     });
-  }
+  });
 
   /* Reviews carousel */
   var track = document.getElementById("reviewTrack");
