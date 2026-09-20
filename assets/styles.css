@@ -507,7 +507,7 @@ section{position:relative;z-index:1}
 
 /* ===================== Footer ===================== */
 .ft{padding:64px 0 28px;background:var(--bg-2)}
-.ft-grid{display:grid;grid-template-columns:1.4fr repeat(2,1fr);gap:40px;margin-bottom:52px}
+.ft-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;margin-bottom:52px}
 .ft-brand p{color:var(--muted);font-size:14px;line-height:1.7;margin:16px 0 20px;max-width:32ch}
 .ft-social{display:flex;gap:10px}
 .ft-social a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:.25s}
