@@ -519,6 +519,10 @@ section{position:relative;z-index:1}
 .ft a:hover{color:var(--cyan-2)}
 .ft-contact li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--muted)}
 .ft-contact svg{width:16px;height:16px;color:var(--cyan);flex-shrink:0;margin-top:1px}
+.ft-map-links{display:inline-flex;align-items:center;gap:6px;margin-left:8px;font-size:12.5px;white-space:nowrap}
+.ft-map-links a{color:var(--cyan-2)}
+.ft-map-links a:hover{color:var(--cyan)}
+.ft-map-links span{color:var(--muted-2)}
 .ft-bottom{
   border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;
   align-items:center;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--muted-2);
