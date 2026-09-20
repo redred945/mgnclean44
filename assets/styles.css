@@ -188,13 +188,6 @@ body::before{
   .hero-badges{animation:heroUp .9s cubic-bezier(.16,1,.3,1) .8s both}
 }
 
-.scroll-cue{
-  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted-2);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
-}
-.scroll-cue .line{width:1px;height:34px;background:linear-gradient(var(--cyan),transparent);animation:scrollPulse 1.8s ease-in-out infinite}
-@keyframes scrollPulse{0%,100%{opacity:.25}50%{opacity:1}}
-
 /* ===================== Stats strip ===================== */
 .stats{background:var(--bg-2);position:relative;z-index:1}
 .stats-in{max-width:var(--maxw);margin:0 auto;padding:34px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
