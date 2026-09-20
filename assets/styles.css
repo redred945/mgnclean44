@@ -206,7 +206,7 @@ body::before{
 
 /* ===================== Section shell ===================== */
 section{position:relative;z-index:1}
-#prestations,#tarifs,#realisations,#avant-apres,#avis,#zone{scroll-margin-top:96px}
+#prestations,#tarifs,#realisations,#avant-apres,#avis,#zone,#ceramique{scroll-margin-top:96px}
 .section{padding:110px 0}
 .section-tight{padding:80px 0}
 .sec-head{max-width:640px;margin:0 0 56px}
@@ -440,6 +440,22 @@ section{position:relative;z-index:1}
 .zone-dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--glow);flex-shrink:0}
 .zone-note{font-size:13px;color:var(--muted-2);line-height:1.6;margin-bottom:22px;max-width:44ch}
 
+/* ===================== Traitement céramique ===================== */
+.cer-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.cer-text h2{font-size:clamp(24px,3vw,34px);margin-bottom:14px}
+.cer-text > p{color:var(--muted);font-size:15.5px;line-height:1.7;margin-bottom:26px;max-width:48ch}
+.cer-list{display:flex;flex-direction:column;gap:13px;margin-bottom:30px}
+.cer-list li{display:flex;align-items:center;gap:10px;font-size:14.5px;color:var(--text);font-weight:500}
+.cer-list li svg{width:17px;height:17px;color:var(--cyan);flex-shrink:0}
+.cer-video-wrap{
+  position:relative;border-radius:var(--radius);overflow:hidden;
+  aspect-ratio:9/16;max-width:360px;margin:0 auto;
+  background:linear-gradient(180deg,var(--panel),var(--panel-2));
+  border:1px solid var(--line);
+  box-shadow:0 0 0 1px rgba(63,109,242,.12), 0 30px 60px -30px rgba(0,0,0,.6);
+}
+.cer-video{display:block;width:100%;height:100%;object-fit:cover}
+
 /* ===================== CTA band ===================== */
 .cta-band{
   border-radius:28px;padding:64px 56px;position:relative;overflow:hidden;
@@ -528,6 +544,8 @@ section{position:relative;z-index:1}
   .proc-grid{grid-template-columns:repeat(2,1fr)}
   .zone-grid{grid-template-columns:1fr;gap:32px}
   .zone-map-wrap{max-width:360px;margin:0 auto}
+  .cer-grid{grid-template-columns:1fr;gap:32px}
+  .cer-grid .cer-video-wrap{order:-1}
   .cta-band{padding:44px 28px;flex-direction:column;text-align:center}
   .cta-actions{justify-content:center}
   .ft-grid{grid-template-columns:1fr 1fr;gap:32px}
