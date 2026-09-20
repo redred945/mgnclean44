@@ -210,21 +210,21 @@ section{position:relative;z-index:1}
 .section{padding:110px 0}
 .section-tight{padding:80px 0}
 
-/* Section separators: a soft glow-line (fades out at the screen edges,
-   subtly brighter at the center, in the site's cyan tint) used
+/* Section separators: a visible glow-line in the site's cyan tint, used
    consistently at every section boundary instead of a flat, barely
    visible 1px grey rule. Applied via .sec-edge-t / .sec-edge-b so each
-   boundary gets exactly one line, never a doubled-up one. */
+   boundary gets exactly one line, never a doubled-up one. Kept to a thin
+   line + soft blur (no hard bar) to stay sober rather than flashy. */
 .sec-shade{background:var(--bg-2)}
 .sec-edge-t,.sec-edge-b{position:relative}
 .sec-edge-t::before,.sec-edge-b::after{
-  content:"";position:absolute;left:0;right:0;height:1px;
+  content:"";position:absolute;left:0;right:0;height:2px;
   background:linear-gradient(90deg,
     transparent 0%,
-    var(--line-2) 16%,
-    rgba(125,152,255,.4) 50%,
-    var(--line-2) 84%,
+    rgba(125,152,255,.65) 10%,
+    rgba(125,152,255,.65) 90%,
     transparent 100%);
+  box-shadow:0 0 12px 1px rgba(63,109,242,.45);
   pointer-events:none;
 }
 .sec-edge-t::before{top:0}
