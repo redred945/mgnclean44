@@ -102,7 +102,7 @@
     </div>
     <div class="hero-badges">
       <div class="hb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2 4 4 8-8 2 2-10 10-6-6z"/></svg><span>Produits <b>haut de gamme</b></span></div>
-      <div class="hb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span><b>Mobile</b> — je viens à vous</span></div>
+      <div class="hb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span><b>Flexible</b> — à domicile ou en atelier</span></div>
       <div class="hb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><span>Réponse <b>rapide</b> sur WhatsApp</span></div>
       <div class="hb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13h3l2-5h6l3 5h4v5h-2M8 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></svg><span><b>Récupération &amp; restitution</b> du véhicule</span></div>
     </div>
@@ -265,6 +265,7 @@
       <div class="opt"><b>Sur devis</b><span>Polissage</span></div>
       <div class="opt"><b>Sur devis</b><span>Véhicule sale</span></div>
     </div>
+    <p class="opts-note" data-reveal>* Véhicule sale : le devis pourra être réajusté selon l'état constaté sur place.</p>
   </div>
 </section>
 
@@ -281,6 +282,7 @@
           <button class="ba-tab" type="button" id="ba-tab-int2" data-ba-tab="int2" role="tab" aria-selected="false" aria-controls="ba-panel-int2">Intérieur 2</button>
           <button class="ba-tab" type="button" id="ba-tab-sieges" data-ba-tab="sieges" role="tab" aria-selected="false" aria-controls="ba-panel-sieges">Sièges</button>
           <button class="ba-tab" type="button" id="ba-tab-tapis" data-ba-tab="tapis" role="tab" aria-selected="false" aria-controls="ba-panel-tapis">Tapis</button>
+          <button class="ba-tab" type="button" id="ba-tab-volant" data-ba-tab="volant" role="tab" aria-selected="false" aria-controls="ba-panel-volant">Volant</button>
         </div>
 
         <div class="ba-panel active" data-ba-panel="ext1" id="ba-panel-ext1" role="tabpanel" aria-labelledby="ba-tab-ext1" tabindex="0">
@@ -371,6 +373,20 @@
           <div class="ba-slider" data-ba-slider>
             <img class="ba-before" src="assets/img/gallery/ba-bmw-plancher-avant.jpg" alt="Tapis avant aspiration, recouvert de poils et poussière" style="object-position:center 40%" loading="lazy" />
             <img class="ba-after" src="assets/img/gallery/ba-bmw-plancher-apres.jpg" alt="Tapis après aspiration complète, moquette impeccable" style="object-position:center 40%" loading="lazy" />
+            <span class="ba-label l-before">Avant</span>
+            <span class="ba-label l-after">Après</span>
+            <div class="ba-handle">
+              <div class="ba-grip">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ba-panel" data-ba-panel="volant" id="ba-panel-volant" role="tabpanel" aria-labelledby="ba-tab-volant" tabindex="0" hidden>
+          <div class="ba-slider" data-ba-slider>
+            <img class="ba-before" src="assets/img/gallery/intervention-mgnclean-protection-volant.jpg" alt="Volant protégé par film avant intervention intérieure" style="object-position:center 28%" loading="lazy" />
+            <img class="ba-after" src="assets/img/gallery/ba-volant-apres.jpg" alt="Volant en alcantara nettoyé, propre et net" style="object-position:center 40%" loading="lazy" />
             <span class="ba-label l-before">Avant</span>
             <span class="ba-label l-after">Après</span>
             <div class="ba-handle">
@@ -488,7 +504,6 @@
       <span class="sec-eyebrow">Canapé, matelas &amp; tapis</span>
       <h2>Vos textiles retrouvent une seconde jeunesse.</h2>
       <p>Taches incrustées, auréoles, odeurs : le lavage à l'injection-extraction élimine la saleté en profondeur sans détremper le tissu. Prestation <b>sur devis</b> selon la taille, la matière et l'état — réalisable à domicile ou dans notre atelier.</p>
-      <p class="textile-address">Atelier : 5 impasse du Moulin de la Pâtissière, 44800 Saint-Herblain — <a href="https://waze.com/ul?q=5%20impasse%20du%20Moulin%20de%20la%20P%C3%A2tissi%C3%A8re%2C%2044800%20Saint-Herblain" target="_blank" rel="noopener">Waze</a> <span aria-hidden="true">·</span> <a href="https://www.google.com/maps/search/?api=1&query=5+impasse+du+Moulin+de+la+P%C3%A2tissi%C3%A8re%2C+44800+Saint-Herblain" target="_blank" rel="noopener">Maps</a></p>
     </div>
 
     <div class="phares-slider-wrap" data-reveal>
@@ -698,6 +713,7 @@
         <span class="sec-eyebrow">Zone d'intervention</span>
         <h2>Nantes &amp; agglomération, je me déplace jusqu'à vous.</h2>
         <p>Intervention à domicile ou sur votre lieu de travail, partout dans la métropole nantaise — avec le même niveau d'exigence où que vous soyez.</p>
+        <p class="atelier-address">Atelier : 5 impasse du Moulin de la Pâtissière, 44800 Saint-Herblain — <a href="https://waze.com/ul?q=5%20impasse%20du%20Moulin%20de%20la%20P%C3%A2tissi%C3%A8re%2C%2044800%20Saint-Herblain" target="_blank" rel="noopener">Waze</a> <span aria-hidden="true">·</span> <a href="https://www.google.com/maps/search/?api=1&query=5+impasse+du+Moulin+de+la+P%C3%A2tissi%C3%A8re%2C+44800+Saint-Herblain" target="_blank" rel="noopener">Maps</a></p>
         <ul class="zone-list">
           <li><span class="zone-dot"></span>Nantes</li>
           <li><span class="zone-dot"></span>Saint-Herblain</li>
