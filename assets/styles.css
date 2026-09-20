@@ -499,6 +499,11 @@ section{position:relative;z-index:1}
 .phares-slider-wrap{max-width:420px;margin:36px auto 0}
 .phares-slider-wrap .ba-tabs{justify-content:center}
 
+/* ===================== Textile (canapé / matelas / tapis) ===================== */
+.textile-address{margin-top:10px;font-size:13.5px;color:var(--muted-2)}
+.textile-address a{color:var(--cyan-2)}
+.textile-address a:hover{color:var(--cyan)}
+
 /* ===================== CTA band ===================== */
 .cta-band{
   border-radius:28px;padding:64px 56px;position:relative;overflow:hidden;
