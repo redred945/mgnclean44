@@ -60,17 +60,36 @@ body::before{
 /* ===================== Header ===================== */
 .hd{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  border-bottom:1px solid transparent;
-  transition:background .35s ease, border-color .35s ease, backdrop-filter .35s ease;
-}
-.hd.scrolled{
-  background:rgba(10,10,10,.78);
-  backdrop-filter:blur(14px) saturate(140%);
-  border-bottom:1px solid var(--line);
+  transition:padding-top .5s cubic-bezier(.22,.61,.36,1);
 }
 .hd-in{
   max-width:var(--maxw);margin:0 auto;padding:16px 24px;
   display:flex;align-items:center;justify-content:space-between;gap:24px;
+  border:1px solid transparent;border-radius:0;
+  transition:
+    max-width .5s cubic-bezier(.22,.61,.36,1), padding .5s cubic-bezier(.22,.61,.36,1),
+    background .5s cubic-bezier(.22,.61,.36,1), backdrop-filter .5s cubic-bezier(.22,.61,.36,1),
+    border-color .5s cubic-bezier(.22,.61,.36,1), border-radius .5s cubic-bezier(.22,.61,.36,1),
+    box-shadow .5s cubic-bezier(.22,.61,.36,1), gap .5s cubic-bezier(.22,.61,.36,1);
+}
+/* Detached once scrolled — narrows into a centered, rounded floating bar */
+.hd.scrolled{padding-top:14px}
+.hd.scrolled .hd-in{
+  max-width:min(920px, calc(100% - 32px));
+  background:rgba(10,10,10,.92);
+  backdrop-filter:blur(16px) saturate(140%);
+  border-color:var(--line-2);
+  border-radius:999px;
+  box-shadow:0 20px 46px -16px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.06);
+  padding:10px 10px 10px 22px;
+  gap:18px;
+}
+.hd.scrolled .logo-mark{height:34px}
+.hd.scrolled .tel-pill{display:none}
+.hd.scrolled .nav{gap:22px}
+.hd.scrolled .nav a{font-size:13.5px}
+@media (prefers-reduced-motion:reduce){
+  .hd,.hd-in,.logo-mark,.nav,.nav a{transition:none}
 }
 .logo{display:flex;align-items:center;font-family:var(--ff-display);font-weight:700;font-size:19px;letter-spacing:-.01em}
 .logo-mark{height:42px;display:flex;align-items:center}
@@ -506,6 +525,7 @@ section{position:relative;z-index:1}
 }
 .ft-bottom a{color:var(--muted-2)}
 .ft-bottom a:hover{color:var(--cyan-2)}
+.ft-badge{height:22px;width:auto;border-radius:5px;display:block}
 
 /* ===================== Reveal on scroll ===================== */
 [data-reveal]{opacity:0;transform:translateY(10px);transition:opacity .4s ease, transform .4s cubic-bezier(.2,.7,.2,1)}
