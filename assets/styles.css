@@ -1,7 +1,7 @@
 /* ===================== MGNclean — design system ===================== */
 :root{
   --bg:#0a0a0a;
-  --bg-2:#0e0e0e;
+  --bg-2:#111111;
   --panel:#131313;
   --panel-2:#181818;
   --line:rgba(255,255,255,.09);
@@ -196,7 +196,7 @@ body::before{
 @keyframes scrollPulse{0%,100%{opacity:.25}50%{opacity:1}}
 
 /* ===================== Stats strip ===================== */
-.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2);position:relative;z-index:1}
+.stats{background:var(--bg-2);position:relative;z-index:1}
 .stats-in{max-width:var(--maxw);margin:0 auto;padding:34px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .stat{text-align:center;padding:0 8px;border-right:1px solid var(--line)}
 .stat:last-child{border-right:none}
@@ -209,6 +209,27 @@ section{position:relative;z-index:1}
 #prestations,#tarifs,#realisations,#avant-apres,#avis,#zone,#ceramique{scroll-margin-top:96px}
 .section{padding:110px 0}
 .section-tight{padding:80px 0}
+
+/* Section separators: a soft glow-line (fades out at the screen edges,
+   subtly brighter at the center, in the site's cyan tint) used
+   consistently at every section boundary instead of a flat, barely
+   visible 1px grey rule. Applied via .sec-edge-t / .sec-edge-b so each
+   boundary gets exactly one line, never a doubled-up one. */
+.sec-shade{background:var(--bg-2)}
+.sec-edge-t,.sec-edge-b{position:relative}
+.sec-edge-t::before,.sec-edge-b::after{
+  content:"";position:absolute;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,
+    transparent 0%,
+    var(--line-2) 16%,
+    rgba(125,152,255,.4) 50%,
+    var(--line-2) 84%,
+    transparent 100%);
+  pointer-events:none;
+}
+.sec-edge-t::before{top:0}
+.sec-edge-b::after{bottom:0}
+
 .sec-head{max-width:640px;margin:0 0 56px}
 .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
 .sec-eyebrow{color:var(--cyan-2);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;display:block}
@@ -394,7 +415,7 @@ section{position:relative;z-index:1}
 .ba-step span{font-size:13.5px;color:var(--muted)}
 
 /* ===================== Fleet strip (luxury cars) ===================== */
-.fleet{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fleet{background:var(--bg-2)}
 .fleet-marquee{overflow:hidden;position:relative;padding:26px 0}
 .fleet-marquee::before,.fleet-marquee::after{
   content:"";position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;
@@ -473,7 +494,7 @@ section{position:relative;z-index:1}
 .cta-actions{display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:1}
 
 /* ===================== Footer ===================== */
-.ft{border-top:1px solid var(--line);padding:64px 0 28px;background:var(--bg-2)}
+.ft{padding:64px 0 28px;background:var(--bg-2)}
 .ft-grid{display:grid;grid-template-columns:1.4fr repeat(2,1fr);gap:40px;margin-bottom:52px}
 .ft-brand p{color:var(--muted);font-size:14px;line-height:1.7;margin:16px 0 20px;max-width:32ch}
 .ft-social{display:flex;gap:10px}
