@@ -377,10 +377,15 @@ section{position:relative;z-index:1}
 .ba-wrap{
   display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;
 }
-.ba-tabs{display:flex;gap:10px;margin-bottom:18px}
+.ba-tabs{
+  display:flex;gap:10px;margin-bottom:18px;overflow-x:auto;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;
+}
+.ba-tabs::-webkit-scrollbar{display:none}
 .ba-tab{
   padding:9px 20px;border-radius:999px;font-size:13.5px;font-weight:600;color:var(--muted);
   border:1px solid var(--line);background:transparent;transition:.25s;
+  flex:0 0 auto;white-space:nowrap;
 }
 .ba-tab.active,.ba-tab:hover{color:var(--text);border-color:rgba(63,109,242,.4);background:var(--cyan-dim)}
 .ba-panel{display:none}
