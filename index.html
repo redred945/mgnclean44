@@ -187,6 +187,7 @@
       <div class="opt"><b>10€</b><span>Désodorisation / désinfection</span></div>
       <div class="opt"><b>5€</b><span>Finitions pneus brillants</span></div>
       <div class="opt"><b>Sur devis</b><span>Traitement céramique</span></div>
+      <div class="opt"><b>Sur devis</b><span>Polissage</span></div>
       <div class="opt"><b>Sur mesure</b><span>Rénovation de phares ternis</span></div>
     </div>
   </div>
@@ -267,12 +268,12 @@
     <div class="ba-wrap">
       <div data-reveal>
         <div class="ba-tabs" role="tablist" aria-label="Choisir l'exemple avant / après">
-          <button class="ba-tab active" type="button" data-ba-tab="ext" role="tab" aria-selected="true">Extérieur</button>
-          <button class="ba-tab" type="button" data-ba-tab="int" role="tab" aria-selected="false">Intérieur</button>
-          <button class="ba-tab" type="button" data-ba-tab="sieges" role="tab" aria-selected="false">Sièges</button>
+          <button class="ba-tab active" type="button" id="ba-tab-ext" data-ba-tab="ext" role="tab" aria-selected="true" aria-controls="ba-panel-ext">Extérieur</button>
+          <button class="ba-tab" type="button" id="ba-tab-int" data-ba-tab="int" role="tab" aria-selected="false" aria-controls="ba-panel-int">Intérieur</button>
+          <button class="ba-tab" type="button" id="ba-tab-sieges" data-ba-tab="sieges" role="tab" aria-selected="false" aria-controls="ba-panel-sieges">Sièges</button>
         </div>
 
-        <div class="ba-panel active" data-ba-panel="ext">
+        <div class="ba-panel active" data-ba-panel="ext" id="ba-panel-ext" role="tabpanel" aria-labelledby="ba-tab-ext" tabindex="0">
           <div class="ba-slider" data-ba-slider>
             <img class="ba-before" src="assets/img/gallery/ba-rs3-exterieur-avant.jpg" alt="Audi RS3 avant nettoyage, capot recouvert de mousse active" style="object-position:center 35%" loading="lazy" />
             <img class="ba-after" src="assets/img/gallery/ba-rs3-exterieur-apres.jpg" alt="Audi RS3 après nettoyage, capot rincé, propre et brillant" style="object-position:center 35%" loading="lazy" />
@@ -286,7 +287,7 @@
           </div>
         </div>
 
-        <div class="ba-panel" data-ba-panel="int" hidden>
+        <div class="ba-panel" data-ba-panel="int" id="ba-panel-int" role="tabpanel" aria-labelledby="ba-tab-int" tabindex="0" hidden>
           <div class="ba-slider" data-ba-slider>
             <img class="ba-before" src="assets/img/gallery/ba-ford-transit-avant.jpg" alt="Habitacle Ford Transit avant nettoyage, tapis de sol boueux et tableau de bord poussiéreux" style="object-position:center 40%" loading="lazy" />
             <img class="ba-after" src="assets/img/gallery/ba-ford-transit-apres.jpg" alt="Habitacle Ford Transit après nettoyage, tapis de sol et plastiques impeccables" style="object-position:center 40%" loading="lazy" />
@@ -300,7 +301,7 @@
           </div>
         </div>
 
-        <div class="ba-panel" data-ba-panel="sieges" hidden>
+        <div class="ba-panel" data-ba-panel="sieges" id="ba-panel-sieges" role="tabpanel" aria-labelledby="ba-tab-sieges" tabindex="0" hidden>
           <div class="ba-slider" data-ba-slider>
             <img class="ba-before" src="assets/img/gallery/ba-sieges-avant.jpg" alt="Siège et plancher avant nettoyage, taches sur le tissu et bouteille au sol" style="object-position:center 45%" loading="lazy" />
             <img class="ba-after" src="assets/img/gallery/ba-sieges-apres.jpg" alt="Siège et plancher après nettoyage, habitacle impeccable" style="object-position:center 45%" loading="lazy" />
@@ -358,7 +359,7 @@
         <a class="btn btn-cyan" href="https://wa.me/message/XT7KCCNUZB6QK1" target="_blank" rel="noopener">Demander un devis céramique</a>
       </div>
       <div class="cer-video-wrap">
-        <video class="cer-video" autoplay muted loop playsinline preload="metadata" poster="assets/video/ceramique-poster.jpg" aria-label="Démonstration de l'effet hydrofuge du traitement céramique MGNclean : l'eau perle et glisse sur la carrosserie">
+        <video class="cer-video" muted loop playsinline preload="metadata" poster="assets/video/ceramique-poster.jpg" aria-label="Démonstration de l'effet hydrofuge du traitement céramique MGNclean : l'eau perle et glisse sur la carrosserie">
           <source src="assets/video/ceramique-hydrofuge.mp4" type="video/mp4" />
         </video>
       </div>

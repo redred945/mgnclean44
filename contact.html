@@ -86,18 +86,18 @@
   <div class="wrap">
     <div class="contact-grid">
       <form class="contact-form" id="contactForm" data-reveal novalidate>
-        <div class="field">
-          <label>Formule de base</label>
+        <fieldset class="field">
+          <legend>Formule de base</legend>
           <div class="svc-radio-group" id="cf-formule">
             <label class="svc-radio"><input type="radio" name="formule" value="" data-price="0" checked /><span>Aucune / à définir</span></label>
             <label class="svc-radio"><input type="radio" name="formule" value="Extérieur" data-price="50" /><span>Extérieur</span><b>50€</b></label>
             <label class="svc-radio"><input type="radio" name="formule" value="Intérieur" data-price="70" /><span>Intérieur</span><b>70€</b></label>
             <label class="svc-radio"><input type="radio" name="formule" value="Intégrale" data-price="110" /><span>Intégrale</span><b>110€</b></label>
           </div>
-        </div>
+        </fieldset>
 
-        <div class="field">
-          <label>Options &amp; suppléments <span class="opt-label">(sélection multiple)</span></label>
+        <fieldset class="field">
+          <legend>Options &amp; suppléments <span class="opt-label">(sélection multiple)</span></legend>
           <div class="svc-check-group" id="cf-options">
             <label class="svc-check"><input type="checkbox" value="Shampouinage sièges" data-price="10" /><span>Shampouinage sièges</span><b>10€</b></label>
             <label class="svc-check"><input type="checkbox" value="Shampouinage tapis" data-price="10" /><span>Shampouinage tapis</span><b>10€</b></label>
@@ -109,7 +109,7 @@
             <label class="svc-check"><input type="checkbox" value="Polissage" data-price="0" data-devis="1" /><span>Polissage</span><b>Sur devis</b></label>
             <label class="svc-check"><input type="checkbox" value="Rénovation de phares ternis" data-price="0" data-devis="1" /><span>Rénovation de phares ternis</span><b>Sur mesure</b></label>
           </div>
-        </div>
+        </fieldset>
 
         <div class="devis-total" id="cf-total">
           <span>Total estimé</span>
@@ -145,7 +145,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
           Envoyer ma demande sur Instagram
         </button>
-        <p class="field-note" id="cf-note">En cliquant, votre message est copié — il ne reste plus qu'à le coller (Ctrl+V) et l'envoyer.</p>
+        <p class="field-note" id="cf-note" role="status" aria-live="polite">En cliquant, votre message est copié — il ne reste plus qu'à le coller (Ctrl+V) et l'envoyer.</p>
 
         <div class="form-divider" id="cf-site-divider">ou</div>
 
@@ -153,7 +153,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z" opacity="0"/><path d="M3 7l9 6 9-6M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg>
           Envoyer directement depuis le site
         </button>
-        <p class="field-status" id="cf-site-status"></p>
+        <p class="field-status" id="cf-site-status" role="status" aria-live="polite"></p>
       </form>
 
       <div class="contact-side" data-reveal>
@@ -207,7 +207,9 @@
           <li><a href="index.html#prestations">Prestations</a></li>
           <li><a href="index.html#realisations">Réalisations</a></li>
           <li><a href="index.html#avant-apres">Avant / Après</a></li>
+          <li><a href="index.html#ceramique">Traitement céramique</a></li>
           <li><a href="index.html#tarifs">Tarifs</a></li>
+          <li><a href="index.html#zone">Zone d'intervention</a></li>
         </ul>
       </div>
       <div>

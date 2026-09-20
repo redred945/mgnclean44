@@ -595,9 +595,10 @@ section{position:relative;z-index:1}
   padding:36px;display:flex;flex-direction:column;gap:20px;
 }
 .field{display:flex;flex-direction:column;gap:8px}
+fieldset.field{border:0;margin:0;padding:0;min-width:0}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.field label{font-size:13.5px;font-weight:600;color:var(--text)}
-.field label .opt-label{font-weight:400;color:var(--muted-2);font-size:12.5px}
+.field label,.field legend{font-size:13.5px;font-weight:600;color:var(--text);padding:0}
+.field label .opt-label,.field legend .opt-label{font-weight:400;color:var(--muted-2);font-size:12.5px}
 .field label .req{color:var(--cyan-2)}
 .field input,.field select,.field textarea{
   width:100%;background:var(--bg);border:1px solid var(--line-2);border-radius:var(--radius-sm);

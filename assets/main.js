@@ -84,6 +84,22 @@
     revealEls.forEach(function (el) { el.classList.add("in"); });
   }
 
+  /* Ceramic treatment video: autoplay only when motion is welcome, same
+     rule as every other looping animation on this site (hero crossfade,
+     before/after demo sweep, reviews autoplay). Reduced-motion visitors
+     get the static poster frame with a manual play control via the
+     native video element instead of an infinite auto-loop. */
+  var cerVideo = document.querySelector(".cer-video");
+  if (cerVideo) {
+    var reduceMotionVideo = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduceMotionVideo) {
+      cerVideo.autoplay = true;
+      cerVideo.play().catch(function () {});
+    } else {
+      cerVideo.controls = true;
+    }
+  }
+
   /* Hero background crossfade */
   var heroBgs = Array.prototype.slice.call(document.querySelectorAll(".hero-bg"));
   if (heroBgs.length > 1) {
