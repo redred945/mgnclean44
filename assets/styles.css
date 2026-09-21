@@ -194,7 +194,7 @@ body::before{
   width:.62em;height:.42em;vertical-align:middle;margin-left:.08em;margin-bottom:.12em;
   border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.18);
 }
-.hero-sub{font-size:clamp(15.5px,1.7vw,18.5px);color:var(--muted);max-width:52ch;margin-bottom:38px;line-height:1.6}
+.hero-sub{font-size:clamp(15.5px,1.7vw,18.5px);color:var(--text);max-width:52ch;margin-bottom:38px;line-height:1.6}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:56px}
 .hero-badges{display:flex;flex-wrap:wrap;gap:28px}
 .hb{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--muted)}
