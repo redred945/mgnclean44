@@ -380,10 +380,8 @@ section{position:relative;z-index:1}
 }
 .ba-wrap > div{min-width:0}
 .ba-tabs{
-  display:flex;gap:10px;margin-bottom:18px;overflow-x:auto;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;
+  display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;
 }
-.ba-tabs::-webkit-scrollbar{display:none}
 .ba-tab{
   padding:9px 20px;border-radius:999px;font-size:13.5px;font-weight:600;color:var(--muted);
   border:1px solid var(--line);background:transparent;transition:.25s;
