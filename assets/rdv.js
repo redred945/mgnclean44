@@ -213,7 +213,7 @@
 
     confirmedTextEl.textContent =
       "Rendez-vous demandé pour le " + dateHuman + " (" + selectedSlot.label + ", " + selectedSlot.hours +
-      "). Votre message est copié : collez-le (Ctrl+V) dans WhatsApp pour que Morgan confirme le créneau.";
+      "). Votre message est copié : collez-le (Ctrl+V) dans WhatsApp pour confirmer le créneau.";
     formWrap.hidden = true;
     confirmedEl.hidden = false;
     confirmedEl.scrollIntoView({ behavior: "smooth", block: "start" });
