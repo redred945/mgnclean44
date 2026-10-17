@@ -191,19 +191,43 @@
     var group = tabsEl.parentElement;
     var tabs = Array.prototype.slice.call(tabsEl.querySelectorAll(".ba-tab"));
     var panels = Array.prototype.slice.call(group.querySelectorAll("[data-ba-panel]"));
-    tabs.forEach(function (tab) {
-      tab.addEventListener("click", function () {
-        var target = tab.getAttribute("data-ba-tab");
-        tabs.forEach(function (t) {
-          var active = t === tab;
-          t.classList.toggle("active", active);
-          t.setAttribute("aria-selected", String(active));
-        });
-        panels.forEach(function (panel) {
-          var show = panel.getAttribute("data-ba-panel") === target;
-          panel.classList.toggle("active", show);
-          panel.hidden = !show;
-        });
+    var scrollable = tabsEl.classList.contains("ba-thumbs");
+    var reduceMotionTabs = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function reveal(tab) {
+      var left = tab.offsetLeft - (tabsEl.clientWidth - tab.offsetWidth) / 2;
+      tabsEl.scrollTo({ left: Math.max(0, left), behavior: reduceMotionTabs ? "auto" : "smooth" });
+    }
+
+    function select(tab) {
+      var target = tab.getAttribute("data-ba-tab");
+      tabs.forEach(function (t) {
+        var active = t === tab;
+        t.classList.toggle("active", active);
+        t.setAttribute("aria-selected", String(active));
+        t.tabIndex = active ? 0 : -1;
+      });
+      panels.forEach(function (panel) {
+        var show = panel.getAttribute("data-ba-panel") === target;
+        panel.classList.toggle("active", show);
+        panel.hidden = !show;
+      });
+      if (scrollable) reveal(tab);
+    }
+
+    tabs.forEach(function (tab, i) {
+      tab.tabIndex = tab.classList.contains("active") ? 0 : -1;
+      tab.addEventListener("click", function () { select(tab); });
+      tab.addEventListener("keydown", function (e) {
+        var next;
+        if (e.key === "ArrowRight") next = tabs[(i + 1) % tabs.length];
+        else if (e.key === "ArrowLeft") next = tabs[(i - 1 + tabs.length) % tabs.length];
+        else if (e.key === "Home") next = tabs[0];
+        else if (e.key === "End") next = tabs[tabs.length - 1];
+        if (!next) return;
+        e.preventDefault();
+        next.focus({ preventScroll: true });
+        select(next);
       });
     });
   });
