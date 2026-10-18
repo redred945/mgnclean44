@@ -228,6 +228,8 @@ section{position:relative;z-index:1}
 #prestations,#tarifs,#realisations,#avant-apres,#avis,#zone,#ceramique{scroll-margin-top:96px}
 .section{padding:110px 0}
 .section-tight{padding:80px 0}
+/* Réalisations follows the fleet marquee (same shade): breathing room below the band */
+#realisations{padding-top:80px}
 
 /* Section separators: a visible glow-line in the site's cyan tint, used
    consistently at every section boundary instead of a flat, barely
@@ -638,6 +640,7 @@ section{position:relative;z-index:1}
   .logo-mark{height:34px}
   .btn-cyan.btn-sm{padding:9px 14px;font-size:13px}
   .section{padding:76px 0}
+  #realisations{padding-top:56px}
   .tel-pill{display:none}
   .stats-in{grid-template-columns:1fr 1fr;padding:26px 18px}
   .ft-grid{grid-template-columns:1fr;gap:28px;margin-bottom:32px}
