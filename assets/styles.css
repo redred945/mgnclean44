@@ -195,7 +195,8 @@ body::before{
   width:.62em;height:.42em;vertical-align:middle;margin-left:.08em;margin-bottom:.12em;
   border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.18);
 }
-.hero-sub{font-size:clamp(15.5px,1.7vw,18.5px);color:var(--text);max-width:52ch;margin-bottom:38px;line-height:1.6}
+.hero-sub{font-size:clamp(15.5px,1.7vw,18.5px);color:var(--text);max-width:58ch;margin-bottom:38px;line-height:1.6}
+.hero-sub strong{font-weight:600}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:56px}
 .hero-badges{display:flex;flex-wrap:wrap;gap:28px}
 .hb{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--muted)}
@@ -272,6 +273,8 @@ section{position:relative;z-index:1}
 .svc-icon{width:46px;height:46px;border-radius:13px;background:var(--cyan-dim);display:flex;align-items:center;justify-content:center;margin-bottom:22px}
 .svc-icon svg{width:23px;height:23px;color:var(--cyan)}
 .svc-card h3{font-size:21px;margin-bottom:6px}
+.svc-from{display:block;margin-top:14px;color:var(--muted);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.svc-from + .svc-price{margin-top:2px}
 .svc-price{display:flex;align-items:baseline;gap:6px;margin:14px 0 20px}
 .svc-price b{font-family:var(--ff-display);font-size:38px;color:var(--text)}
 .svc-price span{color:var(--muted);font-size:13.5px}

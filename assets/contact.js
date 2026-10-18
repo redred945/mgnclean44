@@ -49,7 +49,7 @@
       else total += parseInt(input.dataset.price || "0", 10);
     });
     if (totalEl) {
-      totalEl.textContent = total + "€" + (hasDevis ? " + devis" : "");
+      totalEl.textContent = (total > 0 ? "À partir de " : "") + total + "€" + (hasDevis ? " + devis" : "");
     }
     return { total: total, hasDevis: hasDevis };
   }
@@ -70,7 +70,7 @@
     if (!hasFormule && !options.length) return "";
 
     var sentence = hasFormule
-      ? "Je souhaite une prestation " + formule.value + (formule.dataset.price !== "0" ? " (" + formule.dataset.price + "€)" : "")
+      ? "Je souhaite une prestation " + formule.value + (formule.dataset.price !== "0" ? " (à partir de " + formule.dataset.price + "€)" : "")
       : "Je souhaite un devis";
 
     if (options.length) {
@@ -80,7 +80,7 @@
       sentence += (hasFormule ? " avec les options suivantes : " : " avec ") + optTxt;
     }
 
-    sentence += ". Total estimé : " + totals.total + "€" + (totals.hasDevis ? " (+ prestations sur devis)" : "") + ".";
+    sentence += ". Total estimé : " + (totals.total > 0 ? "à partir de " : "") + totals.total + "€" + (totals.hasDevis ? " (+ prestations sur devis)" : "") + ".";
     return sentence;
   }
 
