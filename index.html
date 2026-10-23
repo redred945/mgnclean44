@@ -227,6 +227,21 @@
       <span class="sec-eyebrow">Avant / après</span>
       <h2>La différence se voit.</h2>
     </div>
+    <div class="wipe" data-wipe data-reveal>
+      <div class="wipe-stage">
+        <img class="wipe-img" src="assets/img/gallery/targa-4s-nettoyage.jpg" alt="Porsche 911 Targa 4S grise à toit rouge, carrosserie propre après préparation" width="900" height="1197" loading="lazy" decoding="async" />
+        <canvas class="wipe-canvas" aria-hidden="true"></canvas>
+        <div class="wipe-hint" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg>
+          <span>Balayez pour nettoyer</span>
+        </div>
+      </div>
+      <div class="wipe-bar">
+        <p class="wipe-status" data-idle="Porsche 911 Targa 4S — essuyez la poussière du doigt." data-done="Voilà ce que ça donne : une 911 Targa 4S préparée à la main.">Porsche 911 Targa 4S — essuyez la poussière du doigt.</p>
+        <button class="btn btn-ghost btn-sm" type="button" data-wipe-reset hidden>Recommencer</button>
+        <button class="wipe-skip" type="button" data-wipe-skip>Tout nettoyer</button>
+      </div>
+    </div>
     <div class="ba-wrap">
       <div class="ba-stage" data-reveal>
         <div class="ba-panel" data-ba-panel="ext1" id="ba-panel-ext1" role="tabpanel" aria-labelledby="ba-tab-ext1" tabindex="0" hidden>
@@ -995,5 +1010,6 @@
 </div>
 
 <script src="assets/main.js"></script>
+<script src="assets/wipe.js"></script>
 </body>
 </html>
